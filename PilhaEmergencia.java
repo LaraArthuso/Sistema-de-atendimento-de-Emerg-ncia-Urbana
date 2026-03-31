@@ -4,20 +4,17 @@ public class PilhaEmergencia {
     private int capacidade;
 
     public PilhaEmergencia(int capacidadeEscolhida) {
-        // Garante o limite mínimo de 30 posições
         this.capacidade = Math.max(capacidadeEscolhida, 30);
         this.elementos = new Chamado[this.capacidade];
         this.topo = -1;
     }
 
-    public void empilhar(Chamado c) {
-        // Validação de overflow
+    public boolean empilhar(Chamado c) {
         if (isCheia()) {
-            System.out.println("Erro (Overflow): A Pilha de Emergência está cheia!");
-            return;
+            return false;
         }
-        topo++;
-        elementos[topo] = c;
+        elementos[++topo] = c;
+        return true;
     }
 
     public Chamado desempilhar() {
@@ -25,11 +22,38 @@ public class PilhaEmergencia {
             return null;
         }
         Chamado c = elementos[topo];
-        elementos[topo] = null; // Limpa a referência
-        topo--;
+        elementos[topo--] = null;
         return c;
     }
 
-    public boolean isCheia() { return topo == capacidade - 1; }
-    public boolean isVazia() { return topo == -1; }
+    public Chamado topo() {
+        if (isVazia()) {
+            return null;
+        }
+        return elementos[topo];
+    }
+
+    public int tamanho() {
+        return topo + 1;
+    }
+
+    public boolean isCheia() {
+        return topo == capacidade - 1;
+    }
+
+    public boolean isVazia() {
+        return topo == -1;
+    }
+
+    public void mostrar() {
+        if (isVazia()) {
+            System.out.println("Pilha vazia.");
+            return;
+        }
+
+        System.out.println("=== Pilha de Emergência ===");
+        for (int i = topo; i >= 0; i--) {
+            System.out.println(elementos[i]);
+        }
+    }
 }
