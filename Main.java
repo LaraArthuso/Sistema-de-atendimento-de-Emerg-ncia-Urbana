@@ -166,34 +166,34 @@ public class Main {
         sistema.mostrarRankingBairros();
     }
 
-    public static void simularCadastros() {
-        System.out.println("\n=== Simulação de Cadastro Automático ===");
+public static void simularCadastros() {
+    System.out.println("\n=== Simulação de Cadastro Automático ===");
 
-        Chamado[] chamadosSimulados = {
-            new Chamado(101, "Centro", "Queda de árvore", 2),
-            new Chamado(102, "Mooca", "Incêndio em residência", 5),
-            new Chamado(103, "Tatuapé", "Falta de energia", 3),
-            new Chamado(104, "Butantã", "Vazamento de gás", 4),
-            new Chamado(105, "Pinheiros", "Buraco na via", 1),
-            new Chamado(106, "Lapa", "Desabamento parcial", 5),
-            new Chamado(107, "Ipiranga", "Acidente de trânsito", 4),
-            new Chamado(108, "Santana", "Enchente", 5),
-            new Chamado(109, "Vila Mariana", "Semáforo apagado", 2),
-            new Chamado(110, "Liberdade", "Curto-circuito em poste", 4)
-        };
+    Chamado[] chamadosSimulados = {
+        new Chamado(101, "Tatuapé", "Comum", 2),
+        new Chamado(102, "Pinheiros", "Emergência", 5),
+        new Chamado(103, "Bela Vista", "Comum", 3),
+        new Chamado(104, "Tucuruvi", "Emergência", 4),
+        new Chamado(105, "Tucuruvi", "Comum", 1),
+        new Chamado(106, "Butantã", "Emergência", 5),
+        new Chamado(107, "Mooca", "Emergência", 5),
+        new Chamado(108, "Higienópolis", "Emergência", 4),
+        new Chamado(109, "Higienópolis", "Comum", 2),
+        new Chamado(110, "Higienópolis", "Emergência", 4)
+    };
 
-        int inseridos = 0;
+    int inseridos = 0;
 
-        for (Chamado chamado : chamadosSimulados) {
-            if (!sistema.idExiste(chamado.getId())) {
-                if (sistema.cadastrarChamado(chamado)) {
-                    inseridos++;
-                }
+    for (Chamado chamado : chamadosSimulados) {
+        if (!sistema.idExiste(chamado.getId())) {
+            if (sistema.cadastrarChamado(chamado)) {
+                inseridos++;
             }
         }
-
-        System.out.println(inseridos + " chamados foram cadastrados com sucesso na simulação.");
     }
+
+    System.out.println(inseridos + " chamados foram cadastrados com sucesso na simulação.");
+}
 
     public static boolean confirmarSaida() {
         System.out.print("Deseja realmente sair do sistema? (s/n): ");
