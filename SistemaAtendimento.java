@@ -163,17 +163,19 @@ public class SistemaAtendimento {
     }
 
     public void mostrarChamadosPorNivel(int nivel) {
-        boolean encontrou = false;
+        int contador = 0;
 
         for (Chamado c : historico) {
             if (c.getNivelUrgencia() == nivel) {
                 System.out.println(c);
-                encontrou = true;
+                contador++;
             }
         }
 
-        if (!encontrou) {
+        if (contador == 0) {
             System.out.println("Não há chamados com nível de urgência " + nivel + ".");
+        }else {
+        System.out.println("Total: " + contador + " chamado(s)");
         }
     }
 
